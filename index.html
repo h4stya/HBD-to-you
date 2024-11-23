@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Erin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: #fdbf00;
+        overflow-x: hidden;
+      }
+
+      .landing-page {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: url('https://api.placeholder.com/400/320') no-repeat center center;
+        background-size: cover;
+        color: white;
+        text-align: center;
+      }
+
+      .landing-page h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      .landing-page p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        animation: fadeIn 2s ease-in-out 0.5s both;
+      }
+
+      .scroll-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 2px solid white;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        animation: pulse 2s infinite;
+      }
+
+      .scroll-btn:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+
+      /* Updated card styles */
+      .card-container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .card {
+        width: 90vw;
+        max-width: 640px;
+        height: 80vh;
+        max-height: 480px;
+        position: relative;
+        perspective: 1200px;
+        transition: 1s;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+      }
+
+      .card:hover {
+        transform: rotate(-5deg);
+      }
+
+      .card:hover .outside {
+        transform: rotateY(-130deg);
+      }
+
+      .outside,
+      .inside {
+        height: 100%;
+        width: 50%;
+        position: absolute;
+        left: 50%;
+      }
+
+      .inside {
+        background: linear-gradient(to right, #e7e7e7, #ffffff 30%);
+        line-height: 1.5;
+        padding: 10% 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .outside {
+        transform-style: preserve-3d;
+        z-index: 1;
+        transform-origin: left;
+        transition: 2s;
+        cursor: pointer;
+      }
+
+      .front,
+      .back {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+        transform: rotateX(0deg);
+      }
+
+      .front {
+        background-color: #ffffff;
+      }
+
+      .back {
+        transform: rotateY(180deg);
+        background: linear-gradient(to left, #e7e7e7, #ffffff 30%);
+      }
+
+      .cake {
+        width: 100%;
+        position: absolute;
+        bottom: 30px;
+      }
+
+      .top-layer,
+      .middle-layer,
+      .bottom-layer {
+        height: 60px;
+        width: 180px;
+        background-repeat: repeat;
+        background-size: 60px 100px;
+        background-position: 28px 0;
+        background-image: linear-gradient(
+            transparent 50px,
+            #fedbab 50px,
+            #fedbab 60px,
+            transparent 60px
+          ),
+          radial-gradient(circle at 30px 5px, #994c10 30px, #fcbf29 31px);
+        border-radius: 10px 10px 0 0;
+        position: relative;
+        margin: auto;
+      }
+
+      .middle-layer {
+        transform: scale(0.85);
+        top: 6px;
+      }
+
+      .top-layer {
+        transform: scale(0.7);
+        top: 26px;
+      }
+
+      .candle {
+        height: 45px;
+        width: 15px;
+        background: repeating-linear-gradient(
+          45deg,
+          #fd3018 0,
+          #fd3018 5px,
+          #ffa89e 5px,
+          #ffa89e 10px
+        );
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        bottom: 146px;
+      }
+
+      .candle:before {
+        content: "";
+        position: absolute;
+        height: 16px;
+        width: 16px;
+        background-color: #ffa500;
+        border-radius: 0 50% 50% 50%;
+        bottom: 48px;
+        transform: rotate(45deg);
+        left: -1px;
+        animation: flicker 0.5s ease-in-out alternate infinite;
+      }
+
+      @keyframes flicker {
+        0% { opacity: 0.5; transform: rotate(45deg) scale(0.8); }
+        100% { opacity: 1; transform: rotate(45deg) scale(1.2); }
+      }
+
+      .outside p {
+        font-size: 23px;
+        text-transform: uppercase;
+        margin-top: 30px;
+        text-align: center;
+        letter-spacing: 6px;
+        color: #000046;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      }
+
+      .inside h1 {
+        font-size: 120px;
+        line-height: 120px;
+      }
+
+      #particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .particle {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0;
+        box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+      }
+
+      @media (max-width: 768px) {
+        .card {
+            width: 95vw;
+            height: 95vh;
+        }
+
+        .outside p {
+            font-size: 18px;
+            letter-spacing: 3px;
+        }
+
+        .inside {
+            padding: 5% 10px;
+        }
+
+        .inside h1 {
+            font-size: 80px;
+            line-height: 80px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="landing-page">
+      <h1>Happy Birthday!</h1>
+      <p>I have something, click below</p>
+      <button class="scroll-btn">Click to see your surprise</button>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <div class="outside">
+          <div class="front">
+            <p>Happy Birthday</p>
+            <div class="cake">
+              <div class="top-layer"></div>
+              <div class="middle-layer"></div>
+              <div class="bottom-layer"></div>
+              <div class="candle"></div>
+            </div>
+          </div>
+          <div class="back"></div>
+        </div>
+        <div class="inside">
+          <p id="wishes"></p>
+          <h1>&#127873;</h1>
+        </div>
+      </div>
+    </div>
+    <div id="particles"></div>
+    <audio id="bgMusic" loop>
+      <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const card = document.querySelector('.card');
+        const audio = document.getElementById('bgMusic');
+        const particlesContainer = document.getElementById('particles');
+        const wishes = document.getElementById('wishes');
+        const scrollBtn = document.querySelector('.scroll-btn');
+
+        const message = "Selamat ulang tahun yang ke-17! asikk udah 17 aja nih, semoga semua impian dan cita cita nya tercapai, dan semoga menjadi kebanggaan bagi keluarga... aamiin";
+
+        scrollBtn.addEventListener('click', function() {
+          document.querySelector('.card-container').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Autoplay music when the card is clicked
+        card.addEventListener('click', function() {
+            audio.play();
+        });
+
+        // Create particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 12 + 5;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            const startX = Math.random() * window.innerWidth;
+            const startY = window.innerHeight;
+            
+            particle.style.left = `${startX}px`;
+            particle.style.top = `${startY}px`;
+            
+            particlesContainer.appendChild(particle);
+            
+            // Animate particle
+            const animation = particle.animate([
+                { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+                { transform: `translate(${Math.random() * 200 - 100}px, ${-window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+            });
+            
+            animation.onfinish = () => {
+                particle.remove();
+            };
+        }
+
+        // Create particles when the card is opened
+        card.addEventListener('mouseenter', function() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(createParticle, i * 50);
+            }
+        });
+
+        // Continuously create particles
+        setInterval(createParticle, 200);
+
+        // Typing animation
+        function typeMessage() {
+            let i = 0;
+            const typing = setInterval(() => {
+                if (i < message.length) {
+                    wishes.innerHTML += message.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typing);
+                }
+            }, 50);
+        }
+
+        // Start typing animation when card is opened
+        card.addEventListener('mouseenter', typeMessage);
+      });
+    </script>
+  </body>
+</html>
